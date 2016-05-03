@@ -1,0 +1,301 @@
+<HTML>
+<head>
+<!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<!--Orginal bg color was #FAFAD2-->
+    <style type="text/css">
+        body {
+            background: #FAFAD2;
+            color: #2f4f4f;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            padding-top: 25px;
+            width: 1000px;
+            margin: 0 auto;
+            line-height: 1.35em;
+        }
+
+        a {
+            color: #203737;
+        }
+
+        a:hover {
+            color: #bca474;
+        }
+
+        #ktitle {
+            line-height: 1.25em;
+        }
+
+        #ktitle>h1 {
+            font-size: 60px;
+            line-height: 1.15em;
+            font-style: italic;
+            letter-spacing: -2px;
+            font-weight: bold;
+        }
+
+        #ktitle>hr {
+            color: transparent;
+            background-color: transparent;
+            height: 4px;
+            border-top: 1px solid #2f4f4f;
+            border-bottom: 1px solid #2f4f4f;
+        }
+
+        section>p {
+            text-align: left;
+            line-height: 1.5em;
+            font-size: 16px;
+        }
+
+        section>div {
+            text-align: left;
+            line-height: 1.5em;
+            font-size: 16px;
+        }
+
+        .row {
+            display: block;
+            margin-left: 0;
+        }
+
+        footer>p {
+            line-height: 1em;
+            font-size: 12px;
+        }
+
+        h3.sectiontitle {
+            text-align: left;
+            font-style: italic;
+        }
+
+        #menu ul {
+            list-style-type: none;
+        }
+
+        #menu ul li {
+            display: inline;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p.lefta {
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.15em;
+        }
+
+        section#tutoring {
+            font-size: 16px;
+        }
+
+        section#tutoring>div>ul>div>p {
+            font-size: 16px;
+            margin-top: 0.5em;
+            margin-left: 1em;
+            margin-bottom: 0.5em;
+        }
+
+        p>tt {
+            font-size: 14px;
+            font-family: monospace;
+        }
+        section>p {
+          text-align: justify;
+        }
+		hr {
+			width: 100%;
+			height: 1px;
+			margin-left: auto;
+			margin-right: auto;
+			background-color:#000000;
+			color:#000000;
+			border: 0 none;
+		}
+    </style>
+	
+    <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+	<!-- jQuery -->
+	<script src="//code.jquery.com/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<!-- Rendering LaTeX MathJx -->
+	<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<Title> The Brusselator </Title>
+<Body>
+
+<H1> <center> The Brusselator </center> </H1> <hr>
+<H5> <center> 
+Lucas Bouck, Mezel Smith, and Harnam Arneja </center>  <p>
+<left>
+
+<a href="http://mason.gmu.edu/~harneja/" style="color:33C4FF;">My Home Page. </a href> <p>
+<a href="http://math.gmu.edu/~tsauer/class/447/" style="color:33C4FF;">Math 447 Home Page. </a href>
+</left>
+</H5>
+
+<H3> <center> Overview </center></H3> <hr>
+
+<p> From a historical point of view, Allen Turing observed that various things in nature seemed to follow 
+these interesting visual patterns of having "stripes" or "spots". This includes looking at stratus clouds, 
+looking at leopards, looking at zebras, microscopic views of cells in plants and animals. So basically he 
+derived a model that describes the distribution of chemical concentrations from a 3-Dimensional point of view. 
+This model is a system of PDEs of the variables x and y. Through further investigation, you can determine where 
+instability of this system occurs in which produces interesting mixes of stripes and spots. From these same results, 
+we can determine where stability occurs (resulting in either spots or stripes, but not both). In our project, 
+we investigate the nature of adjusting various parameters, and seeing how that results in stability or instability; 
+and in the case of stability, see how long it takes for the concentration distribution \(p(x,y)\) to reach its stable 
+equilibrium value. The equations for the Brusselator are shown 
+
+<a role="button" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1" style="color:33C4FF;"> below </a>: 
+<div class="collapse" id="collapse1">
+<p align="justify">
+The p and q in the equations below represent two diffusion coeffiecients and the C and K are parameters. <p>
+\begin{align}
+p_t & =D_{p}\Delta p+p^2q+C-(K+1)p \\
+q_t & =D_{q}\Delta q-p^2q+Kp \\
+\end{align}
+</div>
+
+<p>
+
+The initial conditions, which provide the values of p and q at time \(t=0\), 
+are shown 
+<a role="button" data-toggle="collapse" href="#collapse2" aria-expanded="false" aria-controls="collapse2" style="color:33C4FF;"> below </a>: 
+<div class="collapse" id="collapse2">
+<p align="justify">
+
+\begin{align}
+p(x,y,0)&=1+ \cos(\pi x) \cos(\pi y) \, & \text{ for }  0\le x,\  y\le 40 \\
+q(x,y,0)&=2+ \cos(2 \pi x) \cos(2 \pi y)\, & \text{for }0\le x,\  y\le 40   \\
+\end{align}
+
+</div>
+
+<hr>
+	<h3 align="center"><a role="button" data-toggle="collapse" href="#collapse3" aria-expanded="false" aria-controls="collapse3" style="color:#000000; font-style: italic;">
+	Section I: Analytic Equilibriums and Stability </a></h3>
+	<div class="collapse" id="collapse3">
+		<p align="justify"> The differnetial equations for the Brusselator has an equilibrium 
+		solution at  \(p=C\) and \(q=\frac{K}{C}\) . Since p and q are defined as constants, their derivatives 
+		will be zero. The work is shown
+		<a role="button" data-toggle="collapse" href="#collapse6" aria-expanded="false" aria-controls="collapse1\6" style="color:33C4FF;"> below </a>: 
+		<div class="collapse" id="collapse6">
+		<p align="justify">
+		\begin{align}
+		 p_t & =D_p (0)+C^2 \frac{K}{C}+C - (K+1)C \\
+		 p_t & = CK+C-CK-C \\
+		 p_t & =0 \\
+		 \\
+		 q_t &=D_q (0)-C^2 \frac{K}{C}+KC \\
+		 q_t &=-CK+KC \\ 
+		 q_t &=0 \\
+		\end{align}
+		</div>
+		<br><br>
+		Stable solutions to the differnetial equations satisfy the following condition for the parameter k:  
+		\begin{align}
+		 K \le \left( 1+C \sqrt{\frac{D_p}{D_q}} \right) ^2 \\
+		\end{align}
+		Plugging in \(D_p=1,\ D_q=8,\ C=4.5\ \) yields that stable equilibriums will occur for all \(K \le 6.71\) for the given parameters. 
+		
+		</div>
+	<h3 align="center"><a role="button" data-toggle="collapse" href="#collapse4" aria-expanded="false" aria-controls="collapse4" style="color:#000000; font-style: italic;">
+	<hr> Section II: Implementing the Code </a></h3>
+	<div class="collapse" id="collapse4">
+		<p align="justify"> Adopting the <a href="brusselator.m" style="color:33C4FF;"> code </a href> from the text to the local machines lead to a few difficulties. The main difficult arose from 
+		the fact that in order to replicate the figures from the text, 2000 steps were to be ran on a 40 x 40 grid. However, the computers in the lab were only capable of performing one 
+		iteration of a step every 2 seconds. Therefore each figure would have taken slightly over an hour to produce. In order to decrease the amount of time needed  per step, we edited the code 
+		to not graph after each step and shortened our grid size to 10 x 10. These edits allowed us to produce 2000 steps in about 3 minutes, which is about 10 steps a second. 
+		The graphs shown below are contour plots of the output of \(p(x,y)\) at t=2000 under the initial conditions shown in the overview. <p> 
+		
+		<table border="1">
+		
+		<tr>
+			<td> <img src="Images/BK7.png" width="100%"/> </td>
+			<td> <img src="Images/BK8.png" width="100%"/> </td>
+			<td> <img src="Images/BK9.png" width="100%"/> </td>
+		</tr>
+		
+		<tr>
+		<td> <img width="100%" src="Images/BK10.png"/> </td> 
+		<td> <img width="100%" src="Images/BK11.png"/> </td> 
+		<td> <img width="100%" src="Images/BK12.png"/> </td>
+		</tr>
+		
+		</table>
+		
+		</div>
+	<h3 align="center"><a role="button" data-toggle="collapse" href="#collapse5" aria-expanded="false" aria-controls="collapse5" style="color:#000000; font-style: italic;">
+	<hr>Section III: Graphical Stability </a></h3>
+	<div class="collapse" id="collapse5">
+		<p align="justify"> In this section, the affect of making K satisfy the stability condition was explored by choosing \(K \le 6.71\) which was the condition for stability as discussed 
+		in the overview. Overall, the graphs have less stripes and spots as they appear to have less distinguishable patterns.
+		</p>
+		<p>
+		<table border="1">
+		
+		<tr>
+			<td> <img src="Images/BK4.png" width="100%"/> </td>
+			<td> <img src="Images/BK5.png" width="100%"/> </td>
+		</tr>
+		
+		<tr>
+		<td> <img src="Images/BK6.png" width="100%"/> </td>
+		<td> <img src="Images/BK6.5.png" width="100%"/> </td> 
+		</tr>
+		
+		</table>
+		<br>
+		<p> In the next step, we consider what happens when changing the parameter K (within the range of stability), 
+		and investigating what numerical values of time, denoted T, brings the chemical concentrations of p within .01 
+		of the equilibrium concentration of C=4.5. We are in particular, considering what the least value for T is for 
+		each K value. The code,<a href="brusselatorT.m" style="color:33C4FF;"> BrusselatorT </a>, solves for the least value of T and the 
+		<a href="Trun.m" style="color:33C4FF;"> Trun </a> created the plot from \(K=[4,6.66]\) with 30 steps. <br>
+		<center> <img src="Images/KvsT.png"> </center>
+		
+	</div>
+	<h3 align="center"><a role="button" data-toggle="collapse" href="#collapse7" aria-expanded="false" aria-controls="collapse7" style="color:#000000; font-style: italic;">
+	<hr> Section IV: Graphical Instability </a></h3>
+	<div class="collapse" id="collapse7">
+		<p align="justify"> The following plots demonstrate the contour curves of \(p(x,y)\) when K is in the instable range. The instability produces a fusion of spots and stripes which are non-uniformly distributed. 
+							Notice the changes of the plots for small changes of K. </p> <p>
+		<table border="1">
+		
+		<tr>
+			<td> <img src="Images/BK7.2.png" width="100%"/> </td>
+			<td align="center"> <img src="Images/BK7.4.png" width="80%"/> </td>
+		</tr>
+		
+		<tr>
+		<td> <img src="Images/BK7.6.png" width="100%"/> </td>
+		<td align="center"> <img src="Images/BK7.8.png" width="80%"/> </td> 
+		</tr>
+		
+		</table>
+		</p>
+		
+		<p> The following video shows the output at \(t=2000\) between \(K=7\) to \(K=8\). 
+		Since these values of K are in the instability range, the output drastically changes 
+		with small changes in K. In this video, our \(\Delta K=0.01\). The video below is edited 
+		to have a lower frame rate to make it easier to view. However, this lead to a drop in some 
+		of the actual frames which may show a larger \(\Delta K\) than expected. </p> <p>
+		<center>
+		<video width="867" height="344" controls >
+		<source src="project4_kmov_converted.mp4" type="video/mp4">
+		</video>
+		</center>
+		</p>
+		
+	</div>
+</Body>
+</HTML>
