@@ -1,1 +1,200 @@
+<html>
+
+<title> Orbital Mechanics</title>
+<a href = "index.html"> <-  Back to home </a>
+<head>
+<link rel="stylesheet" href="style3.css">
+</head>
+<script type="text/javascript" 
+	
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+	</script>
+	
+
+
+<h1>Project 3  Orbital Mechanics Modeling</h1>
+<h2>Lucas Bouck, Patrick Bishop, Garrett Lee, and Aneesh Malhotra</h2>
+<hr class = fancy>
+
+<center><video width="320" controls
+source src="figure8.mp4" type="video/mp4"><p>
+</video></center>
+
+
+
+<div>
+<h2> Introduction and Part 1 </h2>
+</div>
+
+<div align = center>
+
+
+ <p> Orbital Mechanics involves the force interactions between large 
+bodies of mass, governed by the equation
+	$$\vec{F} = G\frac{m_1m_2}{|\vec{r}|^3}\vec{r}$$</p>
+<br> 
+<br>
+<p> 
+We then applied this equation to a 3 dimensional two body problem. This 
+yielded the differential equation system, where the mass of the first body 
+is \(m_1\) and the mass of the second body is \(m_2\).
+\begin{eqnarray*}
+d&=&\sqrt{(z_2-z_1)^2+(x_2-x_1)^2+(y_2-y_1)^2}\\
+x_1'&=&v_{x_1}\\
+v_{x_1}'&=&\dfrac{m_2g(x_2-x_1)}{d^3}\\
+y_1'&=&v_{y_1}\\
+v_{y_1}'&=&\dfrac{m_2g(y_2-y_1)}{d^3}\\
+z_1'&=&v_{z_1}\\
+v_{z_1}'&=&\dfrac{m_2g(z_2-z_1)}{d^3}\\
+x_2'&=&v_{x_2}\\
+v_{x_2}'&=&\dfrac{m_1g(x_1-x_2)}{d^3}\\
+y_2'&=&v_{y_2}\\
+v_{y_2}'&=&\dfrac{m_1g(y_1-y_2)}{d^3}\\
+z_2'&=&v_{z_1}\\
+v_{z_2}'&=&\dfrac{m_1g(z_1-z_2)}{d^3}\\
+\end{eqnarray*}
+We then used the Runge Kutta 4th order method to numerically solve for 
+solutions to the differential equation system using given initial 
+conditions. Our code is <a href="orbit2016rk4.txt">here</a>.
+<br>
+<br>
+For our first initial conditions, we had the initial position of body 1 to 
+be \(\vec{r_1}=(2,2,0)\) and body 1's initial velocity was 
+\(\vec{v_1}=(.2,-.2,0)\). Body 2's initial position and initial velocity 
+was \(\vec{r_2}=(0,0,0)\) and \(\vec{v_2}=(-.02,.02,0)\). The mass of 
+body 1 was \(m_1=.03\), and the mass of body 2 was \(m_2=3\). With body 1 
+in red 
+and body 2 in blue, the resulting orbit was:
+<center><video width="320" controls
+source src="project3part21.mp4" type="video/mp4"><p>
+</video></center>
+</p>
+<br>
+<p> We then applied our code to some new initial conditions, which were 
+the same except for the initial velocity of body 1, which was 
+\(\vec{v_1}=(.2,-.2,.2)\). The resulting orbit was:
+<center><video width="320" controls
+source src="project3part22.mp4" type="video/mp4"><p>
+</video></center>
+</p>
+<br>
+
+<h4>Part 2: The Three Body Problem </h4>
+<p> Expanding to a system of three bodies is actually a pretty 
+straightforward process. Only requiring
+that we add an additional mass to our system, new coordinates and initial 
+conditions for the mass, 
+and lastly expanding out equations to take into account the gravitational 
+influence of the new mass.</p>
+
+<p> This can be seen in our adapation of the <a 
+href="orbit2016.m">orbit2016 code</a> along with some demonstrations
+of how the 3 body problem looks.</p> 
+
+<center><video width="320" controls
+source src="3bodyorbit1.mp4" type="video/mp4"><p>
+</video></center>
+
+<center><video width="320" controls
+source src="3bodyorbit2.mp4" type="video/mp4"><p>
+</video></center>
+
+<p> Now, in both the demonstrations the planets have the same masses, the 
+only difference between them is that
+we slightly changed the initial velocity of th red planet from 0.2 to 
+0.2001 which winds up causing the orbit to degenerate. This incremental 
+change causes
+the system to fall apart and become unstable. This can  happen to any 
+system, of course, but this becomes more and
+more likley as more bodies are added making a harder, more stable system, 
+less likely.</p>
+<br>
+<h2> Problem 11 (Part a) </h2>
+<p> For the final problem, we were asked to map the orbits of 3 bodies of 
+equal mass in three-dimensions 
+with a set of given initial conditions. These bodies are supposed to be 
+orbiting one another in a 
+figure-eight and were first discovered by C. Moore in 1993. Letting the 
+masses of each object equal 1, 
+the given set of initial conditions were: $$ (x_1, y_1) = (-0.970, 0.243), 
+(x'_1, y'_1) = (-0.466, -0.433), 
+(x_2, y_2) = (-x_1,-y_1), (x'_2, y'_2) = (x'_1, y'_1), (x_3, y_3) = (0,0), 
+$$ and, $$(x'_3, y'_3) = (-2x'_1, -2y'_1). $$ </p>
+
+<p> The function, orbit11, that was used to run this simulation can be 
+found, <a href="orbit113d.m"> here</a>. The code 
+starts by taking a time interval, number of steps n and the number of 
+points per step p, a list of initial conditions 
+$$ i.e: [x_1, v_{x_1}, y_1, v_{y_1}, x_2, v_{x_2}, y_2, v_{y_2}, x_3, 
+v_{x_3}, y_3, v_{y_3}], $$
+and finally the masses of the three objects in the same order as they were 
+placed in the position.velocity array.
+Orbit11.m calls in trapazoid method to help approximate the orbits of the 
+objects. The resulting orbit then 
+became (just as at the top of the page),
+<center><video width="320" controls
+source src="figure8.mp4" type="video/mp4"> <p>
+</video></center>
+
+<h2> Problem 11 (Part b): Changes in Initial Conditions </h2>
+<p> For the final problem, we made small changes in the initial 
+conditions to test the sensitivity of 
+the orbits. We added values of 10<sup>-k</sup> to the velocity, 
+x'<sub>3</sub>, where 1&le;k&le;5. By adding 10<sup>-1</sup> to the 
+velocity of the third object
+we saw that the previous figure-eight orbit was being slowly shifted to 
+the right as seen in the video below:
+<center><video width="320" controls
+source src="problem11b1.mp4" type="video/mp4"><p>
+</video></center>
+<br>
+The results from adding and subtracting the other values of 
+10<sup>-k</sup> can be seen by the table below:
+<table border="1">
+<tr>
+	
+<td>+10<sup>-2</sup></td><td>+10<sup>-3</sup></td><td>+10<sup>-4</sup></td><td>+10<sup>-5</sup></td><td>-10<sup>-1</sup></td><td>-10<sup>-2</sup></td>
+</tr>
+<tr>
+	<td><video width="250" controls source src="problem11b2.mp4" 
+type="video/mp4"></td><td><video width="250" controls source 
+src="problem11b3.mp4" type="video/mp4"></td><td><video width="250" 
+controls source src="problem11b4.mp4" type="video/mp4"></td><td><video 
+width="250" controls source src="problem11b5.mp4" 
+type="video/mp4"></td><td><video width="250" controls source 
+src="problem11b1sub.mp4" type="video/mp4"></td><td><video width="250" 
+controls source src="problem11b2sub.mp4" type="video/mp4"></td>
+</table>
+<br>
+As you can see from the videos above, any small fluctiation in the 
+initial velocity of the third object will
+cause the objects to shift their figure-eight orbit to the left or to the 
+right and in most of the cases
+still remaining a stable orbit. 
+
+<h2> Orbits in 3-dimensions</h2>
+
+To plot three body orbits in three-dimensions we had to adapt orbit11.m 
+to include a z coordinate. This was done
+by including more arguments to be accepted for the initial position and 
+initial velocity of each object.
+Instead of accepting an array of 6 initial conditions, the new code now 
+takes in an array of 18 intiail 
+conditions. The adapted code can be found, <a href="orbit113d.m"> 
+here</a>. The first example can be found at 
+the top of the page. A few more examples of the 3-D orbits we created can 
+be found below:
+<br>
+<br>
+<center><video width="320" controls
+source src="finaldestination.mp4" type="video/mp4"><p>
+</video></center>
+<br>
+<center><video width="320" controls
+source src="MobiusStrip.mp4"type="video/mp4"><p>
+</video></center>
+<br>
+
+</html>
+
 
